@@ -1,0 +1,14 @@
+<!-- templates/components/gallery/gallery.html -->
+{% load i18n %}
+{% load static %}
+{% for gallery in galleries %}
+    <div class="mx-auto max-w-7xl grid grid-cols-2 md:grid-cols-4 gap-4" id="masonry-gallery-{{ gallery.id }}">
+        {% for image in gallery.images.all %}
+            <div class="grid-item">
+                <a href="{{ image.image.url }}" data-lightbox="gallery{{ gallery.id }}" data-title="{{ image.description }}">
+                    <img class="w-full h-64 object-cover rounded-lg" src="{{ image.image.url }}" alt="{{ image.description }}">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}

@@ -1,0 +1,65 @@
+{% load i18n %}
+<!-- templates/components/about/focus.html -->
+<section class='text-gray-600 body-font'>
+    <div class='mx-auto max-w-7xl px-6 pb-20 pt-2 sm:pt-20 lg:px-8 lg:pt-2'>
+        <h2 class='sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5'>{% trans 'Enfoque' %}</h2>
+        <div class='md:w-11/12 md:pl-6'>
+            <p class='leading-relaxed text-base'>{% trans 'Nos comprometemos a ofrecer mucho más que simples cursos; nuestra misión es abordar de manera integral la' %} <strong>{% trans 'salud mental, física y alimentación' %}</strong> {% trans 'de las familias. Para lograrlo, implementamos estrategias diversificadas que enriquecen la vida de cada miembro:' %}</p>
+            <div class='hidden mt-4 opacity-0 transition-all' id='additional-info-focus-text'>
+                <!-- Contenedor oculto para información adicional -->
+                <ol class='list-disc pl-6 text-gray-700 leading-7'>
+                    <li><strong>{% trans 'Cursos Especializados:' %}</strong> {% trans 'Exploramos temas vitales para el desarrollo familiar, desde' %} <strong>{% trans 'técnicas de comunicación hasta el manejo del estrés' %}</strong>. {% trans 'Estos cursos están diseñados para proporcionar conocimientos prácticos y aplicables, guiando a las familias hacia un crecimiento significativo.' %}</li>
+                    <li><strong>{% trans 'Entrenamientos Prácticos:' %}</strong> {% trans 'Nos enfocamos en fortalecer la' %} <strong>{% trans 'resiliencia' %}</strong> {% trans 'y promover un' %} <strong>{% trans 'estilo de vida saludable' %}</strong> {% trans 'a través de entrenamientos diseñados para integrarse de manera natural en la rutina diaria de las familias.' %}</li>
+                    <li><strong>{% trans 'Talleres Interactivos:' %}</strong> {% trans 'Abordamos temas específicos en' %} <strong>{% trans 'talleres interactivos' %}</strong>, {% trans 'proporcionando herramientas prácticas que las familias pueden incorporar fácilmente en su día a día, creando así un impacto tangible en sus vidas.' %}</li>
+                    <li><strong>{% trans 'Conferencias:' %}</strong> {% trans 'Elevamos la excelencia al traer' %} <strong>{% trans 'expertos en diversos campos' %}</strong> {% trans 'para ofrecer información valiosa y perspectivas enriquecedoras a través de conferencias que iluminan y educan, ampliando horizontes y proporcionando inspiración.' %}</li>
+                    <li><strong>{% trans 'Actividades Familiares:' %}</strong> {% trans 'Programamos actividades que van más allá de la simple diversión, buscando fomentar la' %} <strong>{% trans 'unión familiar' %}</strong> {% trans 'y erradicar la violencia doméstica, promoviendo relaciones saludables y armoniosas que perduren en el tiempo.' %}</li>
+                    <li><strong>{% trans 'Comunicación Abierta:' %}</strong> {% trans 'Facilitamos un espacio para la' %} <strong>{% trans 'comunicación abierta y efectiva' %}</strong> {% trans 'dentro de las familias, fortaleciendo los lazos afectivos y construyendo una base sólida para el entendimiento mutuo, creando así cimientos sólidos para el desarrollo familiar.' %}</li>
+                    <li><strong>{% trans 'Ayuda Mental:' %}</strong> {% trans 'Proporcionamos' %} <strong>{% trans 'apoyo psicológico y recursos' %}</strong> {% trans 'para abordar desafíos mentales, promoviendo la' %} <strong>{% trans 'salud mental' %}</strong> {% trans 'de cada miembro de la familia y contribuyendo a un ambiente propicio para el bienestar emocional.' %}</li>
+                </ol>
+                <br>
+                <p class='leading-relaxed text-base'>{% trans 'En cada paso que damos, en Together Somos Uno, aspiramos a ser el catalizador que transforma vidas, conectando a las familias con recursos prácticos y experiencias enriquecedoras que les permitan alcanzar su máximo potencial.' %}</p>
+            </div>
+            <div class='flex md:mt-4 mt-6'>
+                <button class='inline-flex items-center px-4 py-2 bg-blue-700 border-0 focus:outline-none hover:bg-blue-600 rounded transition-all'
+                        id='learn-more-btn-focus'>
+                    <span class='text-white mr-2'>{% trans 'Leer Mas' %}</span>
+                    <svg fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'
+                         stroke-width='2' class='w-4 h-4' viewBox='0 0 24 24'>
+                        <path d='M5 12h14M12 5l7 7-7 7'></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ... (Tu código HTML anterior) -->
+
+<script>
+    // JavaScript para mostrar/ocultar información adicional al hacer clic en "Learn More" con animación
+    const additionalInfoFocus = document.getElementById('additional-info-focus-text');
+    const learnMoreBtnFocus = document.getElementById('learn-more-btn-focus');
+
+    // Variable para rastrear el estado del botón
+    let isExpandedFocus = false;
+
+    learnMoreBtnFocus.addEventListener('click', function () {
+        // Cambia el estado del botón
+        isExpandedFocus = !isExpandedFocus;
+
+        // Actualiza el texto y el color del botón
+        learnMoreBtnFocus.innerHTML = isExpandedFocus ? '{% trans 'Leer Menos' %}' : '{% trans 'Leer Más' %}';
+        learnMoreBtnFocus.style.color = 'white'; // Establece el color del texto en blanco
+
+        additionalInfoFocus.classList.toggle('hidden');
+        additionalInfoFocus.classList.toggle('opacity-0');
+
+        // Centrar la pantalla en el texto adicional al hacer clic en "Learn More"
+        if (!additionalInfoFocus.classList.contains('hidden')) {
+            window.scrollTo({
+                top: additionalInfoFocus.offsetTop - window.innerHeight / 2,
+                behavior: 'smooth'
+            });
+        }
+    });
+</script>

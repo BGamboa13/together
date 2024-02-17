@@ -1,0 +1,42 @@
+{% load static tailwind_tags %}
+{% load i18n %}
+<!-- templates/components/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <title>Together, Somos Uno</title>
+    {% tailwind_css %}
+</head>
+<body class="bg-gray-100">
+<div class="flex-grow">
+    {% include 'components/nav_bar.html' %}
+    {% include 'components/main/main.html' %}
+    {% include 'components/main/cards.html' %}
+    {% include 'components/main/blogs.html' with blogs=blogs %}
+
+</div>
+{% include 'components/footer.html' %}
+<!-- Incluir el archivo JavaScript -->
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mySwiper = new Swiper('.swiper-container', {
+            slidesPerView: 4,
+            slidesToScroll: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+            },
+            infinite: true,
+        });
+    });
+</script>
+</body>
+</html> 

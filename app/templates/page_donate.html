@@ -1,0 +1,23 @@
+<!-- templates/page_donate.html -->
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://horizon-tailwind-react-git-tailwind-components-horizon-ui.vercel.app/static/css/main.ad49aa9b.css"/>
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <title>Together, Somos Uno</title>
+    {% tailwind_css %}
+</head>
+<body class="flex flex-col min-h-screen">
+    <div class="flex-grow">
+        {% include 'components/nav_bar.html' %}
+        {% include 'components/donate/donation_header.html' %}
+        {% include 'components/donate/campaigns.html' %}
+    </div>
+    {% include 'components/footer.html' %}
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto - Together</title>
+    {% tailwind_css %}
+    <!-- Agrega aquí tus estilos de Tailwind CSS o enlaza el archivo de estilos -->
+</head>
+<body class="bg-gray-100">
+
+<section class="max-w-2xl px-6 py-8 mx-auto bg-white dark:bg-gray-900">
+    <header>
+        <a href="#">
+            <img style="height: 140px; width: 160px;" src="{% static 'img/Together-m.svg' %}" alt="Together, somos uno.">
+        </a>
+    </header>
+
+    <main class="mt-8">
+        <h2 class="text-gray-700 dark:text-gray-200">¡Hola, esta persona: {{ form.name }}!</h2>
+
+        <p class="mt-2 leading-loose text-gray-600 dark:text-gray-300">
+            Has enviado un mensaje a través del formulario de contacto en <span class="font-semibold ">Together</span>.
+        </p>
+        
+        <p class="mt-4 leading-loose text-gray-600 dark:text-gray-300">
+            <strong>Nombre:</strong> {{ form.name }}<br>
+            <strong>Correo Electrónico:</strong> {{ form.email }}<br>
+            <strong>Mensaje:</strong> {{ form.message }}
+        </p>
+        
+        <p class="mt-8 text-gray-600 dark:text-gray-300">
+          Responde lo antes posible,<br>
+            El equipo de Together.
+        </p>
+    </main>
+
+    <footer class="mt-8">
+        <p class="text-gray-500 dark:text-gray-400">
+            Este correo electrónico fue enviado a <a href="#" class="text-blue-600 hover:underline dark:text-blue-400" target="_blank">Together@together.com</a>. 
+            Si prefieres no recibir este tipo de correos electrónicos, puedes <a href="#" class="text-blue-600 hover:underline dark:text-blue-400">cancelar la suscripción</a> o <a href="#" class="text-blue-600 hover:underline dark:text-blue-400">administrar tus preferencias de correo electrónico</a>.
+        </p>
+
+        <p class="mt-3 text-gray-500 dark:text-gray-400">© {% now "Y" %} Together, Somos Uno.</p>
+    </footer>
+</section>
+
+</body>
+</html>

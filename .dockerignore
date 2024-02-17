@@ -1,0 +1,8 @@
+venv/
+.idea/
+Dockerfile
+pip.conf
+README.md
+.gitignore
+.dockerignore
+__pycache__

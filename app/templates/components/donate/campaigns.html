@@ -1,0 +1,59 @@
+{% load i18n %}
+{% load static %}
+<!-- donations.html -->
+{% block content %}
+    <main>
+        <div class="mx-auto bg-opacity-5 flex flex-wrap justify-center">
+            {% for campaign in campaigns %}
+                <a href="{% url 'campaign_details' slug=campaign.slug %}">
+                    <div class="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-clip-border text-gray-700 shadow-lg mb-4 mx-3">
+                        <div class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
+                            <img src="{% static campaign.get_main_image_url %}" alt="{{ campaign.title }}"/>
+                            <div class="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
+                            <button class="!absolute top-4 right-4 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-full text-center align-middle font-sans text-xs font-medium uppercase text-red-500 transition-all hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    type="button" data-ripple-dark="true">
+                                <span class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                         aria-hidden="true" class="h-6 w-6"></svg>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="p-6">
+                            <div class="mb-3 flex items-center justify-between">
+                                <h5 class="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
+                                    {{ campaign.title }}
+                                </h5>
+                                <p class="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                         aria-hidden="true" class="-mt-0.5 h-5 w-5 text-yellow-700"></svg>
+                                </p>
+                            </div>
+                            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+                                {{ campaign.content|safe|truncatewords:10 }}
+                            </p>
+                            <div class='flex flex-col pt-3'>
+                                <div class='flex justify-between'>
+                                    <p class='text-sm font-medium text-gray-600'><strong>{{ campaign.current_amount }}
+                                        $</strong></p>
+                                    <p class='text-sm font-medium text-gray-600'><strong>{{ campaign.target_amount }}
+                                        $</strong></p>
+                                </div>
+                                <div class='mt-2 flex h-3 w-full items-center rounded-full bg-lightPrimary dark:!bg-navy-700'>
+                                    <span style='width: {{ campaign.progress_percentage }}%;'
+                                          class='h-full rounded-full bg-brand-500'></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-3">
+                            <button class="block w-full select-none rounded-lg bg-blue-500 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                    type="button" data-ripple-light="true"
+                                    href="{% url 'campaign_details' slug=campaign.slug %}">
+                                {% trans 'Dona Ahora' %}
+                            </button>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

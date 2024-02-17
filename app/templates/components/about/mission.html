@@ -1,0 +1,54 @@
+{% load i18n %}
+<!-- templates/components/about/mission.html -->
+<section class="text-gray-600 body-font">
+    <div class="mx-auto max-w-7xl px-6 pb-20 pt-2 sm:pt-20 lg:px-8 lg:pt-2">
+        <h2 class="sm:text-3xl text-2xl text-gray-900 font-medium title-font mb-2 md:w-2/5">{% trans 'Misión' %}</h2>
+        <div class="md:w-11/12  md:pl-6">
+            <p class="leading-relaxed text-base">{% trans 'Nuestra <strong>misión</strong> es simple pero <strong>poderosa</strong>: impulsar el <strong>crecimiento</strong> en las familias latinas. A través de <strong>programas innovadores</strong>, brindamos <strong>herramientas</strong> y <strong>apoyo esencial</strong>. Potenciamos las <strong>habilidades familiares</strong>, desafiamos límites y nos convertimos en el <strong>catalizador</strong> para una <strong>vida plena</strong> y <strong>enriquecedora</strong>.' %}
+            </p>
+            <div class="hidden mt-4 opacity-0 transition-all" id="additional-info-mission-text">
+                <!-- Contenedor oculto para información adicional -->
+                <p class="leading-relaxed text-base">{% trans 'En nuestra incansable búsqueda de fortalecer y enriquecer a las familias latinas, nos embarcamos en un viaje evolutivo conjunto. Nuestra misión va más allá de lo simple; nos comprometemos a ser <strong>arquitectos del crecimiento integral</strong>, proporcionando las herramientas y el apoyo esencial necesarios para que cada familia florezca.' %}
+                    <br><br>
+                <p class="leading-relaxed text-base">{% trans 'A través de <strong>programas y actividades innovadores</strong>, trascendemos las barreras convencionales para potenciar las habilidades familiares. Desafiamos audazmente los esquemas que limitan su desarrollo, actuando como el <strong>catalizador que impulsa a las familias hacia una vida plena y enriquecedora</strong>. En nuestra visión, superar limitaciones no es solo un objetivo, sino una promesa.' %}
+                    <br><br>
+                <p class="leading-relaxed text-base">{% trans 'Somos <strong>artífices del cambio positivo</strong>, comprometidos a ser <strong>faros de luz</strong> en el camino de las familias latinas. Nuestra labor va más allá de romper barreras; creamos un <strong>tejido social resistente</strong>, donde cada familia puede tejer su historia de éxito. En este viaje conjunto, desafiamos las expectativas, creamos oportunidades y cultivamos un <strong>terreno fértil</strong> para el florecimiento de las comunidades latinas.' %}</p>
+                <br>
+                <p class="leading-relaxed text-base">{% trans 'No somos solo una organización; somos <strong>arquitectos de sueños</strong>, <strong>aliados inquebrantables</strong> que caminan al lado de las familias latinas en su búsqueda de un <strong>futuro vibrante</strong>. Juntos, trascendemos las limitaciones, construimos puentes hacia el éxito y creamos un legado duradero de <strong>unidad y crecimiento</strong>.' %}</p>
+            </div>
+            <div class="flex md:mt-4 mt-6">
+                <button class="inline-flex items-center px-4 py-2 bg-blue-700 border-0 focus:outline-none hover:bg-blue-600 rounded transition-all"
+                        id="learn-more-btn-mission">
+                    <span class="text-white mr-2">{% trans 'Leer Mas' %}</span>
+                    <svg fill="none" stroke="black" stroke-linecap="round" stroke-linejoin="round"
+                         stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // JavaScript para mostrar/ocultar información adicional al hacer clic en "Learn More" con animación
+    const additionalInfoMission = document.getElementById('additional-info-mission-text');
+    const learnMoreBtnMission = document.getElementById('learn-more-btn-mission');
+    let isExpandedMission = false;
+
+    learnMoreBtnMission.addEventListener('click', function () {
+        isExpandedMission = !isExpandedMission;
+        additionalInfoMission.classList.toggle('hidden');
+        additionalInfoMission.classList.toggle('opacity-0');
+        learnMoreBtnMission.innerHTML = isExpandedMission ? 'Leer Menos' : 'Leer Más';
+        learnMoreBtnMission.style.color = 'white';
+
+        // Centrar la pantalla en el texto adicional al hacer clic en "Learn More"
+        if (!additionalInfoMission.classList.contains('hidden')) {
+            window.scrollTo({
+                top: additionalInfoMission.offsetTop - window.innerHeight / 2,
+                behavior: 'smooth'
+            });
+        }
+    });
+</script>

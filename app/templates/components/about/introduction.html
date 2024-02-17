@@ -1,0 +1,26 @@
+{% load i18n %}
+<!-- templates/components/about/introduction.html -->
+<header class='bg-white'>
+    <div class='mx-auto max-w-7xl px-6 pb-20 pt-2 sm:pt-20 lg:px-8 lg:pt-2'>
+        <div class='items-center lg:flex'>
+            <div class='w-full lg:w-1/2'>
+                <div class='lg:max-w-lg'>
+                    <h1 class='text-3xl font-semibold text-gray-800 dark:text-blue-700 lg:text-4xl'>Together,<span
+                            class='text-blue-500'>Somos uno</span></h1>
+                    <p class='mt-3 text-gray-600 dark:text-gray-400'>{% trans 'Familias Fuertes, ' %}<span
+                            class='font-medium text-blue-500'>{% trans 'Comunidades Resilientes: ' %}</span>{% trans 'Nuestra Misión, Tu Futuro.' %}
+                    </p>
+                    <div class='flex flex-col mt-3 space-y-3 lg:space-y-0 lg:flex-row'>
+                        <p class='relative mt-3 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none'>
+                            {% trans 'Donde damos vida a la evolución familiar. Somos más que una organización sin fines de lucro; somos el puente que conecta las aspiraciones familiares con la realidad. En nuestros espacios seguros, las familias encuentran apoyo, comprensión y las herramientas para un crecimiento integral.' %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class='flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2'>
+                <img class='w-full h-full max-w-md' src='https://merakiui.com/images/components/Email-campaign-bro.svg'
+                     alt='email illustration vector art'>
+            </div>
+        </div>
+    </div>
+</header>
