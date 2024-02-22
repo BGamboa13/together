@@ -1,10 +1,14 @@
 <!-- templates/components/main/nav_bar.html-->
-{% load static i18n %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+{% get_available_languages as AVAILABLE_LANGUAGES %}
+{% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
 
 <header class="bg-white">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="{% trans 'Global' %}">
         <a href="{% url 'index' %}" class="-m-1.5 p-1.5">
-            <span class="sr-only">'Together'</span>
+            <span class="sr-only">{% trans 'Together' %}</span>
             <img style="height: 140px; width: 160px;" src="{% static 'img/Together-m.svg' %}" alt="">
         </a>
         <div class="flex lg:hidden">
@@ -29,6 +33,16 @@
                class="inline-block rounded-lg bg-blue-700 px-8 py-1 text-center text-sm font-semibold
                text-white outline-none ring-blue-300 transition duration-100 hover:bg-blue-600 focus-visible:ring active:bg-blue-400 md:text-base">{% trans 'Donar' %}</a>
         </div>
+        <!-- Selector de idioma -->
+        <div class="hidden lg:flex items-center gap-x-2">
+            {% for language in languages %}
+                <a class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-600 {% if language.code == CURRENT_LANGUAGE %}active{% endif %}"
+                   href="{% if language.code == 'en' %}/{% else %}/{{ language.code }}/{% endif %}">
+                    {{ language.name_local|title }}</a>
+                {% if not loop.last %}<span>/</span>{% endif %}
+            {% endfor %}
+        </div>
+
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
     <div class="lg:hidden hidden" role="dialog" aria-modal="true">
@@ -62,7 +76,16 @@
                         <a href="#"
                            class="inline-block rounded-lg bg-blue-700 px-8 py-1 text-center text-sm font-semibold text-white outline-none ring-blue-300 transition duration-100 hover:bg-blue-600 focus-visible:ring active:bg-blue-400 md:text-base">{% trans 'Donar' %}</a>
                     </div>
+                    <div class="py-6">
+                        {% for language in languages %}
+                            <a class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-600 {% if language.code == CURRENT_LANGUAGE %}active{% endif %}"
+                               href="{% if language.code == 'en' %}/{% else %}/{{ language.code }}/{% endif %}">
+                                {{ language.name_local|title }}</a>
+                            {% if not loop.last %}<span>/</span>{% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
